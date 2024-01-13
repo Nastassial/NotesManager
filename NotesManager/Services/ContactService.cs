@@ -1,4 +1,5 @@
 ﻿using NotesManager.Entities;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Models.DataTransferObject.ContactDtoGroup;
 using NotesManager.Services.Interfaces;
 using System.Numerics;
@@ -31,7 +32,7 @@ public class ContactService : IContactService
         _provider.AddContact(contact);
     }
 
-    public ContactDto? GetContact(ContactIdDto contactDto)
+    public ContactDto? GetContact(EntityIdDto contactDto)
     {
         Contact? contact = _provider.GetContact(contactDto.Id);
 
@@ -68,7 +69,7 @@ public class ContactService : IContactService
         return _provider.UpdateContact(contact);
     }
 
-    public void DeleteContact(ContactIdDto contactChangeDto)
+    public void DeleteContact(EntityIdDto contactChangeDto)
     {
         _provider.DeleteContact(contactChangeDto.Id);
     }

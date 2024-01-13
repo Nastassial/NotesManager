@@ -1,6 +1,7 @@
 ﻿using NotesManager.Entities;
 using NotesManager.Models.DataTransferObject;
 using NotesManager.Models.DataTransferObject.CategoryDtoGroup;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Services.Interfaces;
 
 namespace NotesManager.Services;
@@ -14,7 +15,7 @@ public class CategoryService : ICategoryService
         _provider = provider;
     }
 
-    public CategoryListDto? GetCategoriesList(UserIdDto userIdDto)
+    public CategoryListDto? GetCategoriesList(EntityIdDto userIdDto)
     {
         List<Category> userCategoryList = _provider.GetUserCategoryList(userIdDto.Id);
 
@@ -52,7 +53,7 @@ public class CategoryService : ICategoryService
         return _provider.UpdateCategory(category);
     }
 
-    public void DeleteCategory(CategoryDeleteDto categoryDto)
+    public void DeleteCategory(EntityIdDto categoryDto)
     {
         _provider.DeleteNote(categoryDto.Id);
     }

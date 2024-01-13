@@ -20,10 +20,8 @@ public class NoteDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // вынос в файл конфигурации appsettings.json
-        //var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").SetBasePath(Directory.GetCurrentDirectory()).Build();
-        //optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-
-        optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NotesManagerDb;Trusted_Connection=True;");
+        var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").SetBasePath(Directory.GetCurrentDirectory()).Build();
+        optionsBuilder.UseSqlServer(config.GetConnectionString("NotesManagerDb"));
 
         optionsBuilder.LogTo(Console.WriteLine);
     }

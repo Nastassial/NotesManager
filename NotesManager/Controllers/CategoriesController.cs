@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesManager.Entities;
-using NotesManager.Models.DataTransferObject;
 using NotesManager.Models.DataTransferObject.CategoryDtoGroup;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Services.Interfaces;
 
 namespace NotesManager.Controllers
@@ -21,7 +21,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetCategoriesList([FromBody] UserIdDto userIdDto)
+        public IActionResult GetCategoriesList([FromBody] EntityIdDto userIdDto)
         {
             CategoryListDto? categoriesList = _categoryService.GetCategoriesList(userIdDto);
 
@@ -42,7 +42,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteCategory([FromBody] CategoryDeleteDto categoryDeleteDto)
+        public IActionResult DeleteCategory([FromBody] EntityIdDto categoryDeleteDto)
         {
             _categoryService.DeleteCategory(categoryDeleteDto);
 

@@ -1,4 +1,5 @@
 ﻿using NotesManager.Entities;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Models.DataTransferObject.NoteDtoGroup;
 using NotesManager.Services.Interfaces;
 
@@ -26,7 +27,7 @@ public class NoteService : INoteService
         _provider.AddNote(note);
     }
 
-    public NoteDto? GetNote(NoteIdDto noteChangeDto)
+    public NoteDto? GetNote(EntityIdDto noteChangeDto)
     {
         Note? note = _provider.GetNote(noteChangeDto.Id);
 
@@ -56,7 +57,7 @@ public class NoteService : INoteService
         return _provider.UpdateNote(note);
     }
 
-    public void DeleteNote(NoteIdDto noteChangeDto)
+    public void DeleteNote(EntityIdDto noteChangeDto)
     {
         _provider.DeleteNote(noteChangeDto.Id);
     }

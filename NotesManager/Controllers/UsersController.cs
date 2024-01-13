@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesManager.Entities;
-using NotesManager.Models.DataTransferObject;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Models.DataTransferObject.TabDtoGroup;
+using NotesManager.Models.DataTransferObject.UserDtoGroup;
 using NotesManager.Services.Interfaces;
 
 namespace NotesManager.Controllers
@@ -29,7 +30,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteUser([FromBody] UserIdDto userIdDto)
+        public IActionResult DeleteUser([FromBody] EntityIdDto userIdDto)
         {
             _userService.DeleteUser(userIdDto);
 

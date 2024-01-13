@@ -1,4 +1,5 @@
 ﻿using NotesManager.Entities;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Models.DataTransferObject.TabDtoGroup;
 using NotesManager.Services.Interfaces;
 
@@ -27,7 +28,7 @@ public class TabService : ITabService
         _provider.AddTab(tab);
     }
 
-    public TabDto? GetTab(TabIdDto tabIdDto)
+    public TabDto? GetTab(EntityIdDto tabIdDto)
     {
         Tab? tab = _provider.GetTab(tabIdDto.Id);
 
@@ -56,7 +57,7 @@ public class TabService : ITabService
         return _provider.UpdateTab(tab);
     }
 
-    public void DeleteTab(TabIdDto tabIdDto)
+    public void DeleteTab(EntityIdDto tabIdDto)
     {
         _provider.DeleteTab(tabIdDto.Id);
     }

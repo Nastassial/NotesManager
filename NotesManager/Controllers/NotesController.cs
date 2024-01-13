@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesManager.Entities;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Models.DataTransferObject.NoteDtoGroup;
 using NotesManager.Services.Interfaces;
 
@@ -28,7 +29,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetNote([FromBody] NoteIdDto noteIdDto)
+        public IActionResult GetNote([FromBody] EntityIdDto noteIdDto)
         {
             NoteDto? note = _noteService.GetNote(noteIdDto);
 
@@ -38,7 +39,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteNote([FromBody] NoteIdDto noteIdDto)
+        public IActionResult DeleteNote([FromBody] EntityIdDto noteIdDto)
         {
             _noteService.DeleteNote(noteIdDto);
 

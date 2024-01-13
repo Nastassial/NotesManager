@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesManager.Entities;
+using NotesManager.Models.DataTransferObject.CommonDtoGroup;
 using NotesManager.Models.DataTransferObject.TabDtoGroup;
 using NotesManager.Services.Interfaces;
 
@@ -28,7 +29,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetTab([FromBody] TabIdDto tabIdDto)
+        public IActionResult GetTab([FromBody] EntityIdDto tabIdDto)
         {
             TabDto? tab = _tabService.GetTab(tabIdDto);
 
@@ -38,7 +39,7 @@ namespace NotesManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeleteTab([FromBody] TabIdDto tabIdDto)
+        public IActionResult DeleteTab([FromBody] EntityIdDto tabIdDto)
         {
             _tabService.DeleteTab(tabIdDto);
 

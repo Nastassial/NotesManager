@@ -1,4 +1,4 @@
-﻿namespace NotesManager.Models.DataTransferObject;
+﻿namespace NotesManager.Models.DataTransferObject.UserDtoGroup;
 
 public class UserAddDto
 {
