@@ -14,7 +14,8 @@ builder.Services.AddTransient<NoteDbContext>();
 builder.Services.AddSingleton<IDataProvider, DbDataProvider>();
 builder.Services.AddSingleton<INoteService, NoteService>();
 builder.Services.AddSingleton<ICategoryService, CategoryService>();
-//builder.Services.AddSingleton<ITabService, TabService>();
+builder.Services.AddSingleton<ITabService, TabService>();
+builder.Services.AddSingleton<IUserService, UserService>();
 
 
 var app = builder.Build();

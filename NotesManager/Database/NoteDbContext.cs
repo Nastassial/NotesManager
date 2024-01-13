@@ -23,7 +23,7 @@ public class NoteDbContext : DbContext
         //var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").SetBasePath(Directory.GetCurrentDirectory()).Build();
         //optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 
-        optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NoteManagerDb;Trusted_Connection=True;");
+        optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NotesManagerDb;Trusted_Connection=True;");
 
         optionsBuilder.LogTo(Console.WriteLine);
     }
@@ -31,6 +31,6 @@ public class NoteDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // использование Fluent API
-        modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
+        //modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
     }
 }

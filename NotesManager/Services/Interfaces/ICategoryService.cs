@@ -1,5 +1,6 @@
 ﻿using NotesManager.Entities;
 using NotesManager.Models.DataTransferObject;
+using NotesManager.Models.DataTransferObject.CategoryDtoGroup;
 
 namespace NotesManager.Services.Interfaces;
 
@@ -9,7 +10,7 @@ public interface ICategoryService
 
     public void AddCategory(CategoryAddDto categoryDto);
 
-    public Category? UpdateCategory(CategoryChangeDto categoryDto);
+    public Category? UpdateCategory(CategoryUpdateDto categoryDto);
 
-    public void DeleteCategory(CategoryChangeDto categoryDto);
+    public void DeleteCategory(CategoryDeleteDto categoryDto);
 }

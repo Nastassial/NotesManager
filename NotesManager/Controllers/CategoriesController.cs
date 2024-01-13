@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesManager.Entities;
 using NotesManager.Models.DataTransferObject;
+using NotesManager.Models.DataTransferObject.CategoryDtoGroup;
 using NotesManager.Services.Interfaces;
 
 namespace NotesManager.Controllers
@@ -24,33 +25,39 @@ namespace NotesManager.Controllers
         {
             CategoryListDto? categoriesList = _categoryService.GetCategoriesList(userIdDto);
 
-            if (categoriesList == null) { return BadRequest(string.Empty); }
+            if (categoriesList == null) 
+            { 
+                return BadRequest(string.Empty); 
+            }
 
             return Ok(categoriesList);
         }
 
         [HttpPost]
-        public IActionResult AddCategory([FromBody] CategoryAddDto categoryDto)
+        public IActionResult AddCategory([FromBody] CategoryAddDto categoryAddDto)
         {
-            _categoryService.AddCategory(categoryDto);
+            _categoryService.AddCategory(categoryAddDto);
 
-            return Ok(categoryDto);
+            return Ok(categoryAddDto);
         }
 
         [HttpPost]
-        public IActionResult DeleteCategory([FromBody] CategoryChangeDto categoryChangeDto)
+        public IActionResult DeleteCategory([FromBody] CategoryDeleteDto categoryDeleteDto)
         {
-            _categoryService.DeleteCategory(categoryChangeDto);
+            _categoryService.DeleteCategory(categoryDeleteDto);
 
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult UpdateCategory([FromBody] CategoryChangeDto categoryChangeDto)
+        public IActionResult UpdateCategory([FromBody] CategoryUpdateDto categoryUpdateDto)
         {
-            Category? category = _categoryService.UpdateCategory(categoryChangeDto);
+            Category? category = _categoryService.UpdateCategory(categoryUpdateDto);
 
-            if (category == null) { return BadRequest(string.Empty); }
+            if (category == null) 
+            { 
+                return BadRequest(string.Empty); 
+            }
 
             return Ok(category);
         }

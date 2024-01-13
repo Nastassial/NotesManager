@@ -1,8 +1,8 @@
-﻿namespace NotesManager.Entities;
+﻿namespace NotesManager.Models.DataTransferObject.TabDtoGroup;
 
-public class Tab
+public class TabDto
 {
-    public int Id { get; set; }
+    //public int? CategoryId { get; set; }
 
     public string Title { get; set; } = null!;
 
@@ -10,10 +10,5 @@ public class Tab
 
     public string Url { get; set; } = null!;
 
-
-
     public int UserId { get; set; }
-    public User? User { get; set; }
-
-    //public List<Category> Categories { get; set; }
 }

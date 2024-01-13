@@ -4,9 +4,9 @@ public class Note
 {
     public int Id { get; set; }
 
-    public string Title { get; set; }
+    public string Title { get; set; } = null!;
 
-    public string Content { get; set; }
+    public string Content { get; set; } = null!;
 
     public DateTime Created { get; set; } = DateTime.UtcNow;
 
@@ -14,9 +14,7 @@ public class Note
 
 
     public int UserId { get; set; }
-    public UserProfile? User { get; set; }
-    //public List<UserProfile> Users { get; set; }
+    public User? User { get; set; }
 
-    //public int? CategoryId { get; set; }
-    public List<Category> Categories { get; set; } // навигационное св-во
+    //public List<Category> Categories { get; set; }
 }

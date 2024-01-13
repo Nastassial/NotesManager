@@ -1,4 +1,4 @@
-﻿namespace NotesManager.Models.DataTransferObject;
+﻿namespace NotesManager.Models.DataTransferObject.NoteDtoGroup;
 
 public class NoteUpdateDto
 {
@@ -8,5 +8,5 @@ public class NoteUpdateDto
 
     public string? Content { get; set; }
 
-    public int? CategoryId { get; set; }
+    //public int? CategoryId { get; set; }
 }

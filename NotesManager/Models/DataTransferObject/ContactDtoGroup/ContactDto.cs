@@ -1,8 +1,10 @@
-﻿namespace NotesManager.Entities;
+﻿using NotesManager.Entities;
 
-public class Contact
+namespace NotesManager.Models.DataTransferObject.ContactDtoGroup;
+
+public class ContactDto
 {
-    public int Id { get; set; }
+    //public int? CategoryId { get; set; }
 
     public string FirstName { get; set; } = null!;
 
@@ -16,10 +18,5 @@ public class Contact
 
     public string? Comment { get; set; }
 
-
-
     public int UserId { get; set; }
-    public User? User { get; set; }
-
-    //public List<Category> Categories { get; set; }
 }

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NotesManager.Entities;
-using NotesManager.Models.DataTransferObject;
+using NotesManager.Models.DataTransferObject.TabDtoGroup;
 using NotesManager.Services.Interfaces;
 
 namespace NotesManager.Controllers
@@ -11,57 +11,48 @@ namespace NotesManager.Controllers
     {
         private readonly ILogger<TabsController> _logger;
 
-        private readonly INoteService _noteService;
+        private readonly ITabService _tabService;
 
-        public TabsController(ILogger<TabsController> logger, INoteService service)
+        public TabsController(ILogger<TabsController> logger, ITabService service)
         {
             _logger = logger;
-            _noteService = service;
+            _tabService = service;
         }
 
         [HttpPost]
-        public IActionResult AddNote([FromBody] NoteDto noteDto)
+        public IActionResult AddTab([FromBody] TabDto tabDto)
         {
-            _noteService.AddNote(noteDto);
+            _tabService.AddTab(tabDto);
 
-            return Ok(noteDto);
+            return Ok(tabDto);
         }
 
         [HttpPost]
-        public IActionResult GetNote([FromBody] NoteChangeDto noteChangeDto)
+        public IActionResult GetTab([FromBody] TabIdDto tabIdDto)
         {
-            NoteDto? note = _noteService.GetNote(noteChangeDto);
+            TabDto? tab = _tabService.GetTab(tabIdDto);
 
-            if (note == null) { return BadRequest(string.Empty); }
+            if (tab == null) { return BadRequest(string.Empty); }
 
-            return Ok(note);
+            return Ok(tab);
         }
 
         [HttpPost]
-        public IActionResult DeleteNote([FromBody] NoteChangeDto noteChangeDto)
+        public IActionResult DeleteTab([FromBody] TabIdDto tabIdDto)
         {
-            _noteService.DeleteNote(noteChangeDto);
+            _tabService.DeleteTab(tabIdDto);
 
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult UpdateNote([FromBody] NoteUpdateDto noteUpdateDto)
+        public IActionResult UpdateTab([FromBody] TabUpdateDto tabUpdateDto)
         {
-            Note? note = _noteService.UpdateNote(noteUpdateDto);
+            Tab? tab = _tabService.UpdateTab(tabUpdateDto);
 
-            if (note == null) { return BadRequest(string.Empty); }
+            if (tab == null) { return BadRequest(string.Empty); }
 
-            return Ok(note);
+            return Ok(tab);
         }
-
-        [HttpPost]
-        public IActionResult UpdateNoteCategory([FromBody] NoteChangeCategoryDto noteChangeCategoryDto)
-        {
-            _noteService.UpdateNoteCategory(noteChangeCategoryDto);
-
-            return Ok();
-        }
-
     }
 }

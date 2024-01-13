@@ -23,4 +23,26 @@ public interface IDataProvider
     public Category? UpdateCategory(Category category);
 
     public List<Category> GetUserCategoryList(int userId);
+
+    public User? GetUser(int id);
+
+    public void AddTab(Tab tabDto);
+
+    public Tab? GetTab(int id);
+
+    public Tab? UpdateTab(Tab tab);
+
+    public void DeleteTab(int id);
+
+    public void AddContact(Contact contact);
+
+    public Contact? GetContact(int id);
+
+    public Contact? UpdateContact(Contact contact);
+
+    public void DeleteContact(int id);
+
+    public void AddUser(User user);
+
+    public void DeleteUser(int id);
 }

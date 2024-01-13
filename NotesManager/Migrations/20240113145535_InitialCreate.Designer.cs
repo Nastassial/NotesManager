@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NotesManager.Database;
 
@@ -11,9 +12,11 @@ using NotesManager.Database;
 namespace NotesManager.Migrations
 {
     [DbContext(typeof(NoteDbContext))]
-    partial class NoteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240113145535_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,7 +213,7 @@ namespace NotesManager.Migrations
             modelBuilder.Entity("NotesManager.Entities.Contact", b =>
                 {
                     b.HasOne("NotesManager.Entities.User", "User")
-                        .WithMany("Contacts")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -221,7 +224,7 @@ namespace NotesManager.Migrations
             modelBuilder.Entity("NotesManager.Entities.Note", b =>
                 {
                     b.HasOne("NotesManager.Entities.User", "User")
-                        .WithMany("Notes")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -232,7 +235,7 @@ namespace NotesManager.Migrations
             modelBuilder.Entity("NotesManager.Entities.Tab", b =>
                 {
                     b.HasOne("NotesManager.Entities.User", "User")
-                        .WithMany("Tabs")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -267,13 +270,7 @@ namespace NotesManager.Migrations
 
             modelBuilder.Entity("NotesManager.Entities.User", b =>
                 {
-                    b.Navigation("Contacts");
-
-                    b.Navigation("Notes");
-
                     b.Navigation("Profile");
-
-                    b.Navigation("Tabs");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,7 +4,7 @@ public class UserProfile
 {
     public int Id { get; set; }
 
-    public string Nickname { get; set; }
+    public string Nickname { get; set; } = null!;
 
     public string? Email { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using NotesManager.Entities;
 using NotesManager.Models.DataTransferObject;
+using NotesManager.Models.DataTransferObject.CategoryDtoGroup;
 using NotesManager.Services.Interfaces;
 
 namespace NotesManager.Services;
@@ -27,24 +28,31 @@ public class CategoryService : ICategoryService
 
     public void AddCategory(CategoryAddDto categoryDto)
     {
+        User? userDb = _provider.GetUser(categoryDto.UserId);
+
+        if (userDb == null) { return; }
+
         Category category = new Category()
         {
-            Name = categoryDto.Name,
+            Name = categoryDto.Name.Trim(),
+            ParentId = categoryDto.ParentId,
+            Parent = categoryDto.Parent,
+            Users = new List<User> (){ userDb },
         };
 
         _provider.AddCategory(category);
     }
 
-    public Category? UpdateCategory(CategoryChangeDto categoryDto)
+    public Category? UpdateCategory(CategoryUpdateDto categoryUpdateDto)
     {
-        Category? category = _provider.GetCategory(categoryDto.Id);
+        Category? category = _provider.GetCategory(categoryUpdateDto.Id);
 
         if (category == null) { return null; }
 
         return _provider.UpdateCategory(category);
     }
 
-    public void DeleteCategory(CategoryChangeDto categoryDto)
+    public void DeleteCategory(CategoryDeleteDto categoryDto)
     {
         _provider.DeleteNote(categoryDto.Id);
     }

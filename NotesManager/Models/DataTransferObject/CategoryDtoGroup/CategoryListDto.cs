@@ -1,6 +1,6 @@
 ﻿using NotesManager.Entities;
 
-namespace NotesManager.Models.DataTransferObject;
+namespace NotesManager.Models.DataTransferObject.CategoryDtoGroup;
 
 public class CategoryListDto
 {
