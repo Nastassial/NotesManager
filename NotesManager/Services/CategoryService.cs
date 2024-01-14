@@ -29,16 +29,16 @@ public class CategoryService : ICategoryService
 
     public void AddCategory(CategoryAddDto categoryDto)
     {
-        User? userDb = _provider.GetUser(categoryDto.UserId);
+        //User? userDb = _provider.GetUser(categoryDto.UserId);
 
-        if (userDb == null) { return; }
+        //if (userDb == null) { return; }
 
         Category category = new Category()
         {
             Name = categoryDto.Name.Trim(),
             ParentId = categoryDto.ParentId,
             Parent = categoryDto.Parent,
-            Users = new List<User> (){ userDb },
+            UserId = categoryDto.UserId,
         };
 
         _provider.AddCategory(category);
@@ -50,11 +50,20 @@ public class CategoryService : ICategoryService
 
         if (category == null) { return null; }
 
+        category.Name = categoryUpdateDto.Name ?? "";
+        category.ParentId = categoryUpdateDto.ParentId;
+        category.Parent = categoryUpdateDto.Parent;
+        if (categoryUpdateDto.UserId != null)
+        {
+            category.UserId = (int)categoryUpdateDto.UserId;
+        }
+        category.User = categoryUpdateDto.User;
+
         return _provider.UpdateCategory(category);
     }
 
     public void DeleteCategory(EntityIdDto categoryDto)
     {
-        _provider.DeleteNote(categoryDto.Id);
+        _provider.DeleteCategory(categoryDto.Id);
     }
 }

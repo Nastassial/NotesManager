@@ -16,4 +16,6 @@ public class User
     public List<Note> Notes { get; set; } = new List<Note>();
 
     public List<Contact> Contacts { get; set; } = new List<Contact>();
+
+    public List<Category> Categories { get; set; } = new List<Category>();
 }

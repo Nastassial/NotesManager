@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using NotesManager.Database;
+﻿using NotesManager.Database;
 using NotesManager.Entities;
 using NotesManager.Services.Interfaces;
 
@@ -86,23 +85,19 @@ public class DbDataProvider : IDataProvider
         Console.WriteLine($"categoryName = {category.Name}");
 
         Category? categoryDb = _db.Categories
-                                    .Where(c => c.Name.Trim() == category.Name.Trim() && c.ParentId == category.ParentId)
+                                    .Where(c => c.Name.Trim() == category.Name.Trim() 
+                                        && c.ParentId == category.ParentId 
+                                        && c.UserId == category.UserId)
                                     .FirstOrDefault();
 
         if (categoryDb == null) 
         {
             _db.Categories.Add(category);
+            _db.SaveChanges();
 
             //await _db.Categories.AddAsync(category);
+            //await _db.SaveChangesAsync();
         }
-        else 
-        {
-            categoryDb.Users.Add(category.Users.First());
-        }
-
-        _db.SaveChanges();
-
-        //await _db.SaveChangesAsync();
     }
 
     public Category? GetCategory(int id)
@@ -149,7 +144,8 @@ public class DbDataProvider : IDataProvider
 
         if (user == null) { return new List<Category>(); }
 
-        return _db.Categories.Where(c => c.Users.Contains(user)).ToList();
+        //return _db.Categories.Where(c => c.Users.Contains(user)).ToList();
+        return new List<Category>();
 
         //return await _db.Categories.Where(c => c.Users.Contains(user)).ToListAsync();
     }

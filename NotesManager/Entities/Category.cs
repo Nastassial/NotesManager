@@ -11,5 +11,6 @@ public class Category
     public Category? Parent { get; set; }
     public List<Category> Children { get; set; } = new List<Category>();
 
-    public List<User> Users { get; set; } = new List<User>();
+    public int UserId { get; set; }
+    public User? User { get; set; }
 }
